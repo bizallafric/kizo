@@ -1,0 +1,138 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+<div class="home_container">
+    <!--start of header pic-->
+    <div class="header-cover">
+            <div class="sub-cover"></div>
+            <div class="cap_words">
+                <h2>Kizo Online Store</h2>
+                <p>Latest and quality smart phones, laptops, gadgets etc</p>
+                <a href="#products">
+                 <div class="shop-btn">View Products</div></a>
+            </div>
+            <img src="static/images/headercover.jpg" alt="ecommerce, Africa, iphone">
+        </div>
+
+        <!-- product display -->
+
+        <div  class="product-display">
+          <h1>Products</h1>
+        <div id="products"class="product-container">
+            <div class="class-loader">
+                <img src="{% static 'images/30.gif' %}" alt="ecommerce, Africa, Cameroon,">
+            </div>
+               
+        </div>
+        <div class="load-more">
+            Load more
+            <span class="loader-gif">
+              <img src="{% static 'images/5.gif' %}" alt="ecommerce, Africa, Cameroon,">
+            </span>
+            </div>
+        </div>
+        <div class="hot-deals-header">
+        <h2>Hot Deals</h2>
+      </div>
+        <div class="deal_container">
+          
+            <div class="deal_container_sub">
+                <div class="deal_img_">
+                <img src="{% static 'images/deals.jpg' %}" alt="deals, black friday, ecommerce">
+                </div>
+                <div class="hot_deals">
+<!---
+slider
+-->
+
+<div class="home-slider">
+    <div class="home-slider-container">
+      <div class="inner-slider">
+      <img src="media/images/product_three_DlWwFQf.jpg">
+    </div>
+    <div class="inner-slider">
+      <img src="static/images/brands/dell-logo-vector-01.png">
+    </div>
+  
+    <div class="inner-slider">
+      <img src="static/images/brands/htc-(eps)-vector-logo.png">
+    </div>
+    <div class="inner-slider">
+      <img src="static/images/brands/htc-(eps)-vector-logo.png">
+    </div> 
+ 
+    </div>
+  
+      <button class="previous">&laquo;</button>
+      <button class="next">&raquo;</button>
+    </div>
+  </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<br><br><br><br>
+        <div class="hot-deals-header"></div>
+  <div class="container-slider">
+  <h2>Our Partners</h2>
+   <section class="customer-logos slider">
+      <div class="slide"><img src="{% static 'images/brands/apple-mac-vector-logo.png' %}"></div>
+      <div class="slide"><img src="{% static 'images/brands/dell-logo-vector-01.png' %}"></div>
+      <div class="slide"><img src="{% static 'images/brands/bizalafric.png' %}"></div>
+      <div class="slide"><img src="{% static 'images/brands/lenovo-group-vector-logo.png' %}"></div>
+      <div class="slide"><img src="{% static 'images/brands/samsung--eps--vector-logo.png' %}"></div>
+      <div class="slide"><img src="{% static 'images/brands/sony--eps--vector-logo.png' %}"></div>
+      <div class="slide"><img src="{% static 'images/brands/motorola--eps--vector-logo.png' %}"></div>
+      <div class="slide"><img src="{% static 'images/brands/htc-(eps)-vector-logo.png' %}"></div>
+    </section>
+</div>
+
+        <!-- server connection lost-->
+
+        <div class="connection-lost">
+          Cannot connect to the server....
+        </div>
+
+
+</div>
+<script  src="{% static 'script/apis.js' %}"></script>
+<script  src="{% static 'script/slider.js' %}"></script>
+<script>
+    $(document).ready(function(){
+      // Add smooth scrolling to all links
+      $(".cap_words a").on('click', function(event) {
+    
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
+    
+          // Store hash
+          var hash = this.hash;
+    
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+    
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+          });
+        } // End if
+      });
+    });
+    </script>
+
+{% endblock %}

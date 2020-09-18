@@ -1,0 +1,173 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="loader_">
+    <div class="img_loader">
+      <img src="{% static 'img/load.gif' %}">
+    </div>
+    </div>
+  <div class="product-main-container">
+  <div class= "product-detail-container">
+  
+  <div class="img-view-container  previewimg-active">
+    <div class="side-img">
+      <div class="img-1">
+      <img class="active_side" src="{{firsimg.image.url}}"onmouseover="preview(this)" >
+    </div>
+      {% if imgs  %}
+
+      {% for image in imgs %}
+      <div class="img-1">
+      <img src="{{image.image.url}}" onmouseover="preview(this)" >
+    </div>
+    {% endfor %}
+      {% endif %}
+  
+    </div>
+  <div class="img-active">
+    <img id="0"src="{{firsimg.image.url}}"  onclick="zoom(this)"></img>
+
+  </div>
+  </div>
+  
+
+<div class="-product-info-container">
+
+    <div class="product-name-field">
+        <h2>
+        {{product.productname}}
+    </h2>
+    </div>
+    <div class="price-field-container">
+     <div class="product-price-field">
+            Price: {{product.price}}
+     </div>
+     <div class="seller-id">
+         Seller: Moenikes Makoge
+     </div>
+     <button id="contact-seller">
+        <input id="pd-value"value="{{product.slug}}" type="hidden"> 
+        <input id="pd-num"value="{{product.contact}}" type="hidden"> 
+        Contact Seller</button>
+</div>
+</div>
+
+<div class="product-detail-display">
+        <h1>
+                Product Properties
+            </h1>
+    <div class="product-table">
+    <div class="product-ruleone">
+        Properties
+    </div>
+    
+    <div class="product-ruletwo">
+            Details
+        </div>
+</div>
+
+<div class="product-table">
+        <div class="product-ruleone">
+            size
+        </div>
+        <div class="product-ruletwo">
+                {{product.size}}
+            </div>
+    </div>
+
+    <div class="product-table">
+            <div class="product-ruleone">
+                brand
+            </div>
+            <div class="product-ruletwo">
+                    {{product.brand}}
+                </div>
+        </div>
+
+        <div class="product-table">
+                <div class="product-ruleone">
+                    color
+                </div>
+                <div class="product-ruletwo">
+                        {{product.color}}
+                    </div>
+            </div>
+            <div class="product-table">
+                    <div class="product-ruleone">
+                        Storage
+                    </div>
+                    <div class="product-ruletwo">
+                            {{product.storage}}
+                        </div>
+                </div>
+
+                <div class="product-table">
+                        <div class="product-ruleone">
+                            Description
+                        </div>
+                        <div class="product-ruletwo">
+                                {{product.description}}
+                            </div>
+                    </div>
+
+                    <div class="product-table">
+                            <div class="product-ruleone">
+                                State
+                            </div>
+                            <div class="product-ruletwo">
+                                    {{product.productstate}}
+                                </div>
+                        </div> 
+</div>
+</div>
+  </div>
+<!--display simila products-->
+<br><br>
+<div class="home_container">
+<div class="product-detail-display">
+        <h1>
+               Simila Products
+            </h1>
+            </div>
+<!-- product display -->
+    
+            <div  class="product-display">
+            <div id="products"class="product-container">
+                <div class="class-loader">
+                    <img src="{% static 'images/30.gif' %}" alt="ecommerce, Africa, Cameroon,">
+                </div>
+                   
+            </div>
+            <div class="load-more">
+                Load more
+                <span class="loader-gif">
+                  <img src="{% static 'images/5.gif' %}" alt="ecommerce, Africa, Cameroon,">
+                </span>
+                </div>
+            </div>
+         </div>
+    
+        </div>
+  <script>
+      
+  $(document).ready(function(){
+$('.side-img img').hover(function(){
+  $('.side-img img').css({'box-shadow':'1px 1px 4px 1px rgba(0,0,0,0.3)','-o-box-shadow':'1px 1px 4px 1px rgba(0,0,0,0.3)','-ms-box-shadow':'1px 1px 4px 1px rgba(0,0,0,0.3)','moz-box-shadow':'1px 1px 4px 1px rgba(0,0,0,0.3)','transform':'scale(0.9)'})
+    $('.side-img img').not(this).css({'box-shadow':'none','transform':'scale(1)'})
+},function(){
+  $(this).removeClass("activeimg");
+});
+
+});
+function preview(img){
+
+document.getElementById(0).src=img.src;
+
+    
+  
+  
+}
+  </script>
+  <script  src="{% static 'script/apis.js' %}"></script>
+{% endblock %}

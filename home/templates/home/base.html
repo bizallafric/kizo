@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+        </title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link href="{% static 'css/css.css'%}" rel="stylesheet">
+        <link href="{% static 'css/productdetail.css'%}" rel="stylesheet">
+        <link href="{% static 'css/slider.css'%}" rel="stylesheet">
+        <script  src="{% static 'script/jquery.js' %}"></script>
+
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet"> 
+       </head>
+       <header>
+           <div class="header">
+               <div class="logo">
+                   <img src="{% static 'images/logo.png' %}" alt="electronics, ecommerce, phones">
+               </div>
+
+               <div class="menu">
+                   <div class="menucontainer">
+                    <a href=""><div class="subdiv">
+                    Home
+                   </div></a>
+                   <a href="">
+                   <div class="subdiv">
+                       Shop
+                   </div>
+                </a>
+                   <a href="">
+                   <div class="subdiv">
+                       About
+                   </div>
+                   </a>
+                </div> 
+               </div>
+           </div>
+           <!-- end of menu-->
+           
+       </header>
+       <body>
+           <div class="userlogin">
+              
+            <form id="registrationfm" action="http://127.0.0.1:8000/login/user" method="post">
+                {% csrf_token %}
+                    <div class="info-login">
+                        <h1> Connecting you....
+                                </h1>
+                            <p>
+                                You will be redirected to 
+                                seller's whatapp account.
+                            </p>
+                        </div>
+            <div class="input-field">
+            <input placeholder="Enter your name" name="name" value="" type="text" required>
+            </div>
+            <div class="input-field">
+            <input placeholder="Enter your number"name="phone" value=""type="number" required>
+            </div>
+            <div class="connecting-user-gif">
+                    <img src="{% static 'images/30.gif' %}" alt="ecommerce, Africa, Cameroon,">
+            </div>
+            <button id="rg-btn" type="submit">Connect</button>
+            <a href=""><div class="order-cancel">Cancel</div></a>
+            </form>
+           </div>
+           <div class="maincontainer-class">
+                {% block content %}
+                {% endblock %}
+           </div>
+
+      </body>
