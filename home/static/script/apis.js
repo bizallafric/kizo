@@ -93,7 +93,7 @@ function setCookie(cname, cvalue, exdays) {
 
   // return domain name
 function _domainName(){
-    domain="http://127.0.0.1:8000/"
+    domain="/"
     return domain
 }
 
@@ -274,7 +274,7 @@ var _domain  = 'http://127.0.0.1:8000/'
 var  _half_slug = "product/detail/"
 var product_slug=$('#pd-value',this).val()
 var product_seller=$('#pd-num',this).val()
-var _product_url = _domain+_half_slug+product_slug
+var _product_url = "/"+ _half_slug+product_slug
 
 // delete old cookies 
 setCookie("product_link", 0, -1)
