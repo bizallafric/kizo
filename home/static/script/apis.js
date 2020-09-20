@@ -275,7 +275,13 @@ var  _half_slug = "product/detail/"
 var product_slug=$('#pd-value',this).val()
 var product_seller=$('#pd-num',this).val()
 var _product_url = _domain+_half_slug+product_slug
+
+// delete old cookies 
+setCookie("product_link", 0, -1)
+setCookie("seller_number", 0, -1)
+
 // set a new product cookie
+// and seller phone number of product
 cname  = "product_link" 
  cvalue = _product_url
  exdays = 1
@@ -347,19 +353,26 @@ function loadDeals(){
     xhr.open(method,url)
     xhr.send()
     xhr.onload=function(){
-        console.log('print')
+        const  dealElment = document.querySelector('.home-slider-container');
         const  serverResponse = xhr.response
         var  productArray =serverResponse
-        console.log(serverResponse)
+        
         for(let i=0;i<productArray.length;i++)
         {
+            
             const innerSlider = document.createElement('div')
             const img         = document.createElement('img')
             const a           = document.createElement('a')
+            img.src=productArray[i].image
             innerSlider.className = "inner-slider"
+            innerSlider.appendChild(img)
+            dealElment.appendChild(innerSlider)
         }
 }
 xhr.onerror=function(){
 console.log('error occured')
 }
 }
+
+
+

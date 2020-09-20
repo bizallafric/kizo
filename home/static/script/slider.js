@@ -1,3 +1,6 @@
+
+
+function hotSlider(){
 var slider = document.querySelector('.home-slider')
 var slides = $('.home-slider-container .inner-slider').length
 var sliderContainer = document.querySelector('.home-slider-container')
@@ -6,12 +9,11 @@ var nextbtn = document.querySelector('.next')
 var slideSize = slider.offsetWidth;
 var currentslide = 0;
 
+var interval = null;
+$(document).ready(function(){
+    interval = setInterval(intervalCall,3000);
+});
 
-setInterval(function(){
-setTimeout(function(){
-    nextSlide(),500
-})
-},3000)
 
 function moveSlides(){
   
@@ -19,9 +21,23 @@ sliderContainer.style.transform ='translateX(-'+currentslide*slideSize+'px)'
 
 }
 
+function intervalCall(){
+    
+    if(currentslide ===slides){
+    slides[-1]
+    currentslide=0
+}
+else {
+    currentslide+=1
+}
+moveSlides()
+}
+
+
 function nextSlide(){
-    console.log('slides',slides)  
-    console.log('slidercnt',currentslide)
+    alert('clicked')
+    console.log(slides)
+    clearInterval(interval);
     if(currentslide ===slides){
     slides[-1]
     currentslide=0
@@ -35,7 +51,7 @@ moveSlides()
 }
 
 function previousSlide(){
-    console.log('previous called')
+    clearInterval(interval);
     if(currentslide<=0){
       slides[-1]
     }
@@ -75,3 +91,4 @@ function generateShortCut(){
     slider.appendChild(shortcuts)
 }
  **/
+}
