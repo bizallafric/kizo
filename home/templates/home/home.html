@@ -23,19 +23,23 @@
 
         <div  class="product-display">
           <h1>Products</h1>
-        <div id="products"class="product-container">
+        <div id="products"class="product-container pd-display">
             <div class="class-loader">
                 <img src="{% static 'images/30.gif' %}" alt="ecommerce, Africa, Cameroon,">
             </div>
                
         </div>
-        <div class="load-more">
+        <div id="loadmoreproducts"class="load-more">
             Load more
             <span class="loader-gif">
               <img src="{% static 'images/5.gif' %}" alt="ecommerce, Africa, Cameroon,">
             </span>
             </div>
         </div>
+
+
+
+        <!-- display hot deals products-->
         <div class="hot-deals-header">
         <h2>Hot Deals</h2>
       </div>
@@ -71,7 +75,7 @@ slider
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <br><br><br><br>
-<div class="hot-deals-header"></div>
+
         <!-- server connection lost-->
 
         <div class="connection-lost">
@@ -82,6 +86,10 @@ slider
 </div>
 <script  src="{% static 'script/apis.js' %}"></script>
 <script  src="{% static 'script/slider.js' %}"></script>
+<script>
+//load products
+loadProducts()
+</script>
 <script>
     $(document).ready(function(){
       // Add smooth scrolling to all links

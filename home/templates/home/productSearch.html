@@ -1,0 +1,35 @@
+       
+     {% extends 'home/base.html' %}
+     {% load static %}
+     
+     {% block content %}  
+       
+       <!-- product display -->
+
+        <div  class="product-display">
+            <div class="category-type">
+            <span>Category: {{cate.name}}</span>,  <span>Subcategory: {{subcate.name}}</span>
+        </div>
+          <div id="productsSeach"class="product-container">
+              {% if title is None %}
+              <h3 style="text-align: center"> Product not found</h3>
+              {% endif %}
+              <div class="class-loader">
+                  <img src="{% static 'images/30.gif' %}" alt="ecommerce, Africa, Cameroon,">
+              </div>
+                 
+          </div>
+          <div id="loadmoreSearch"class="load-more">
+              Load more
+              <span class="loader-gif">
+                <img src="{% static 'images/5.gif' %}" alt="ecommerce, Africa, Cameroon,">
+              </span>
+              </div>
+          </div>
+          
+          <script  src="{% static 'script/apis.js' %}"></script>
+         <script>
+             // load search products
+             loadSearchProducts()
+         </script>
+          {% endblock %}

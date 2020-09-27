@@ -1832,7 +1832,7 @@ border-radius: 5px;
     {
         position: relative;
         font-size: 40px;
-        margin-top:-20px;
+       
     }
     .-product-info-container h2{
         text-transform: capitalize;
@@ -1881,7 +1881,24 @@ border-radius: 5px;
         left:5%;
         text-align: center;
         border-color: rgba(0,0,0,0.2);
-    }
+	}
+	.product_deal img{
+		width:100%;
+		height:auto;
+	}
+	.product_deal .deal-name{
+		font-size:20px;
+		font-style: italic;
+		color:rgba(0, 0, 0, 0.8);
+	}
+	.product_deal .deal-details{
+		width:100%;
+		padding:5px 5px 20px;
+		line-height:1.5;
+		border-bottom:solid;
+		border-width:1px;
+		font-size:18px;
+	}
 @media only screen and (min-width:150px) and (max-width:400px){
 	
 	.product-detail-display{

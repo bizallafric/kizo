@@ -1,8 +1,11 @@
 
 
-function hotSlider(){
+function hotSlider(products){
+
+
 var slider = document.querySelector('.home-slider')
 var slides = $('.home-slider-container .inner-slider').length
+
 var sliderContainer = document.querySelector('.home-slider-container')
 var previousbtn = document.querySelector('.previous') 
 var nextbtn = document.querySelector('.next')
@@ -35,8 +38,8 @@ moveSlides()
 
 
 function nextSlide(){
-    alert('clicked')
-    console.log(slides)
+  
+    
     clearInterval(interval);
     if(currentslide ===slides){
     slides[-1]

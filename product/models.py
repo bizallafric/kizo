@@ -31,7 +31,7 @@ class productPost(models.Model):
     slug        = models.CharField(max_length=200,null=True,blank=True)
     price       = models.CharField(max_length=100,null=True)
     productstate= models.CharField(max_length=100,null=True)
-    contact     = models.CharField(max_length=100,null=True,help_text="(00237)(number)")
+    contact     = models.CharField(max_length=100,null=True,help_text="(237)(number)")
     hotdeal     = models.BooleanField(default=False)
     dealoftheday= models.BooleanField(default=False)
     def __str__(self):
@@ -44,6 +44,15 @@ class productPost(models.Model):
             self.slug=Generate_slug(instance,slug)
         
         return super(productPost,self).save(*args,**kwargs)
+
+class ProductDeal(models.Model):
+    dealname     = models.CharField(max_length=200,null=True)
+    product      = models.ForeignKey(productPost,blank=True,on_delete=models.CASCADE,null=True,related_name="productdeal")
+    dealimg     = models.ImageField(upload_to="dealimg",null=True)
+    description = models.TextField(null=True,blank=True)
+
+    def __str__(self):
+        return self.dealname
 
 
 

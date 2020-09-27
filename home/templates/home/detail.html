@@ -52,11 +52,30 @@
         Contact Seller</button>
 </div>
 </div>
-
 <div class="product-detail-display">
         <h1>
                 Product Properties
             </h1>
+            
+            {% if productdeal %}
+
+            <div class="product_deal">
+              {% for pd in productdeal %}
+              <div class="deal-name">
+                {{pd.dealname}}
+                </div>
+              {% if pd.dealimg %}
+              <img src="{{pd.dealimg.url}}" alt="Cameroon, ecommerce, Africa">
+              {% endif %}
+              <div class="deal-details">
+                {{pd.description}}
+              </div>
+              
+              {% endfor %}
+              
+            </div>
+            {% endif %}
+
     <div class="product-table">
     <div class="product-ruleone">
         Properties
@@ -133,7 +152,7 @@
 <!-- product display -->
     
             <div  class="product-display">
-            <div id="products"class="product-container">
+            <div id="similar-product-container"class="product-container  ">
                 <div class="class-loader">
                     <img src="{% static 'images/30.gif' %}" alt="ecommerce, Africa, Cameroon,">
                 </div>
@@ -170,4 +189,9 @@ document.getElementById(0).src=img.src;
 }
   </script>
   <script  src="{% static 'script/apis.js' %}"></script>
+  <!-- call the load similar product script-->
+  <script  src="{% static 'script/similar.js' %}"></script>
+  <script>
+  
+  </script>
 {% endblock %}

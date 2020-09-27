@@ -3,7 +3,40 @@
 <html lang="en">
     <head>
         <title>
+            {% if title %}
+            {{title}}
+            {% endif %}
         </title>
+        <meta name="description" content="{{description}}"/>
+        <meta property="og:url"           content="https://www.monikizo.com/" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="{{title}}" />
+        <meta property="og:description"   content="{{description}}" />
+        {% if firsimg %}
+        <meta property="og:image"   content="{{firsimg.image.url}}" />
+        {% else %}
+        <meta property="og:image"   content="/static/images/linkedin_banner_image_2.png" />
+        {% endif %}
+
+<link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="/static/images/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/static/images/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+ 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -22,15 +55,39 @@
 
                <div class="menu">
                    <div class="menucontainer">
-                    <a href=""><div class="subdiv">
+                    <a href="{% url 'home:home' %}"><div class="subdiv">
                     Home
                    </div></a>
-                   <a href="">
+
                    <div class="subdiv">
                        Shop
+                       <div class="shop-options">
+                       <div class="shop-cat-container">
+                           {% if categories %}
+                           <div class="submenu-container">
+                                
+                           {% for category in categories %}
+                           <div class="categories">
+                               <a >{{category.name}}</a>
+                            {% if category.sub_cat.all %}
+                            <div class="sub-category-container">
+                               {% for subcat in category.sub_cat.all %}
+                               <a href="{% url 'home:productSearch' cat=category.id sub=subcat.pk %}">
+                                   <div class="sub-cat">
+                                       {{subcat.name}}
+                                   </div>
+                               </a>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                           </div>
+                           {% endfor %}
+                        </div>
+                           {% endif %}
+                       </div>
                    </div>
-                </a>
-                   <a href="">
+                </div>
+                   <a href="{% url 'home:about' %}">
                    <div class="subdiv">
                        About
                    </div>
@@ -42,8 +99,7 @@
            
        </header>
        <body>
-           <div class="userlogin">
-              
+           <div class="userlogin">  
             <form id="registrationfm" action="/login/user" method="post">
                 {% csrf_token %}
                     <div class="info-login">
@@ -71,5 +127,85 @@
                 {% block content %}
                 {% endblock %}
            </div>
+           <footer>
+          <nav>
+              <div class="footer">
+                  <div class="menu">
+                      <a href="{% url 'home:home' %}">
+                          <div class="sub-nav">
+                              Home
+                          </div>
+                      </a>
+                      <a href="{% url 'home:about' %}">
+                            <div class="sub-nav">
+                                About
+                            </div>
+                        </a>
+                      
+                  </div>
 
+                  <div class="menu">
+                        <a href="{% url 'home:policy' %}" >
+                            <div class="sub-nav">
+                                data policy
+                            </div>
+                        </a>
+                        <a href="{% url 'home:shoppingpolicy' %}">
+                              <div class="sub-nav">
+                                  Shopping policy
+                              </div>
+                          </a>
+                        
+                    </div>
+              
+
+              <div class="contact-container">
+                  <h2>Contact Us</h2>
+                  <div class="subcontainer-contact">
+                      <div class="icon">
+                        <img src="/static/images/icons/facebook.png" alt="business, ecommerce, Cameroon, Buea, Africa">
+                      </div>
+                      <a href="https://www.facebook.com/kizogadgets/" target="_blank"><div class="url">
+                          Facebook
+                      </div></a>
+                  </div>
+
+                  <div class="subcontainer-contact">
+                        <div class="icon">
+                        <img src="/static/images/icons/Instagram.png" alt="business, ecommerce, Cameroon, Buea, Africa">
+                        </div>
+                        <a href="https://www.instagram.com/monikizo.electronics/" target="_blank"><div class="url">
+                            Instagram
+                        </div></a>
+                    </div>
+
+                    <div class="subcontainer-contact">
+                    <div class="icon">
+                    <img src="/static/images/icons/whatsapp.png" alt="business, ecommerce, Cameroon, Buea, Africa">
+                    </div>
+                            <a href=""><div class="url">
+                                (+237)-673-369-857
+                            </div></a>
+                        </div>
+
+
+                        <div class="subcontainer-contact">
+                                <div class="icon">
+                                <img src="/static/images/icons/home.png" alt="business, ecommerce, Cameroon, Buea, Africa">
+                                </div>
+                                        <a ><div class="url">
+                                            Cameroon, Southwest region, Molyko Buea
+                                        </div></a>
+                                    </div>
+              </div>
+
+              
+            </div>
+            <div class="developby">
+                    <a href="https://www.bizalafric.com"> Develope by  <span><img src="/static/images/brands/bizalafric.png"></span> 
+               <span>BizalAfric</span></a>
+            </div>
+          </nav>
+              </footer>
+           <script  src="{% static 'script/js.js' %}"></script>
       </body>

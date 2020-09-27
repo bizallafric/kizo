@@ -99,7 +99,7 @@ function _domainName(){
 
 //createElements
 // for loaded products
-loadProducts()
+
 
 function elments(htmlContainer,products,i){
     var       _domain = _domainName()
@@ -157,11 +157,10 @@ function elments(htmlContainer,products,i){
 // create xhr for products receive
 // XMLHttpRequest 
 
-function xhrReturn(){
-    var       _domain = _domainName()
+function xhrReturn(_url){
     const xhr = new XMLHttpRequest()
     const method =  "GET"
-    const url    = _domain +"home/products"
+    const url    = _url
     const responseType = "json"
     xhr.responseType = responseType
     xhr.open(method,url)
@@ -172,10 +171,43 @@ function xhrReturn(){
 
 // display products to user on page load
 function loadProducts(){
-    
-    const product_container = document.querySelector('.product-container')
+    var       _domain = _domainName()
+    __url = _domain +"home/products"
+    const product_container = document.querySelector('.pd-display')
    
-    xhr=xhrReturn()
+    xhr=xhrReturn(__url)
+    
+    xhr.onload=function(){
+        
+        const  serverResponse = xhr.response
+        var    products  = serverResponse
+        var i;
+        if(products){
+            
+            $('.product-display .class-loader').hide();
+            $('.product-display .load-more').show('fast');
+            
+        }
+        for(i=0;i<6;i++){
+            // create html dom elements
+            elments(product_container,products,i)
+            
+        }
+    }
+    xhr.onerror=function(){
+        $('.connection-lost').css({'visibility':'initial'});
+    }
+   
+}
+
+
+/* load products base on category and subcategory */
+
+function loadSearchProducts(){
+    
+    const product_container = document.querySelector('#productsSeach')
+    const _url= '/api/product/search'+window.location.pathname;
+    xhr=xhrReturn(_url)
     
     xhr.onload=function(){
         
@@ -204,15 +236,36 @@ function loadProducts(){
 
 
 // load more products when user clicks the load more btn
-const loaderEl = document.querySelector('.load-more');
+const loaderEl = document.querySelector('#loadmoreproducts');
+if(loaderEl){
 loaderEl.addEventListener('click',LoadMore)
-
+}
+// load more search products
+const loaderSearchEl = document.querySelector('#loadmoreSearch');
+if(loaderSearchEl){
+loaderSearchEl.addEventListener('click',LoadMore)
+}
 function LoadMore(){
+    const el = document.querySelector('.product-container')
     $('.product-display  .load-more .loader-gif').show();
-xhr =xhrReturn();
-xhr.onload=function(){
+      var       _domain = _domainName()
+    __url = _domain +"home/products"
+    xhr =xhrReturn(__url);
+    _loadMoreProducts(xhr,el)
+    
+}
+// load more search products
+function LoadMoreSearch(){
+    const el = document.querySelector('#productsSeach')
+    $('.product-display  .load-more .loader-gif').show();
+    const _url= '/api/product/search'+window.location.pathname;
+    xhr =xhrReturn(_url);
+    _loadMoreProducts(xhr,el)
+    
+}
+function _loadMoreProducts(xhr){
+    xhr.onload=function(){
     $('.product-display  .load-more .loader-gif').hide();
-    const product_container = document.querySelector('.product-container')
     const  serverResponse = xhr.response
     var    products  = serverResponse
     var numberofproducts =0
@@ -234,8 +287,6 @@ xhr.onload=function(){
    as product loadcount cookie
    less than product length
    */
-  console.log('called')
-  console.log(numberofproducts,products.length)
     if(numberofproducts<products.length){
         setCookie('loadcount',numberofproducts, 1)
           // start pulling products from the max
@@ -252,8 +303,9 @@ xhr.onload=function(){
 xhr.onerror=function(){
     $('.connection-lost').css({'visibility':'initial'});
 }
-
 }
+
+
 
 // event delegation handler for dynamic generated button
 // this will store the product url user has just visited to cookies
@@ -274,7 +326,8 @@ var _domain  = 'http://127.0.0.1:8000/'
 var  _half_slug = "product/detail/"
 var product_slug=$('#pd-value',this).val()
 var product_seller=$('#pd-num',this).val()
-var _product_url = "/"+ _half_slug+product_slug
+var __domain    = window.location.hostname
+var _product_url = _domain+ "/"+ _half_slug+product_slug
 
 // delete old cookies 
 setCookie("product_link", 0, -1)
@@ -340,6 +393,27 @@ function getAuthState(){
     }
 }
 
+// load menus 
+loadMenu()
+function loadMenu(){
+
+    var       _domain = _domainName()
+    const xhr = new XMLHttpRequest()
+    const method =  "GET"
+    const url    = _domain +"load/menu"
+    const responseType = "json"
+    xhr.responseType = responseType
+    xhr.open(method,url)
+    xhr.send()
+    xhr.onload=function(){
+        const  serverResponse = xhr.response
+        const  menuarray =serverResponse
+ 
+    }
+    xhr.onerror=function(){
+    }
+}
+
 
 // load product deals 
 loadDeals()
@@ -363,11 +437,34 @@ function loadDeals(){
             const innerSlider = document.createElement('div')
             const img         = document.createElement('img')
             const a           = document.createElement('a')
+            const view        = document.createElement('div')
+            const text        = document.createTextNode('View')
+            
+            a.href =productArray[i].contact
             img.src=productArray[i].image
+            // add event listener
+
+            a.addEventListener('click',function(event){
+                cname  = "product_link" 
+                cvalue = productArray[i].contact
+                exdays = 1
+                // this cookie is use to display similar products to user
+                setCookie(cname, cvalue, exdays) 
+            });
+            view.className="dealView"
+            view.appendChild(text)
             innerSlider.className = "inner-slider"
-            innerSlider.appendChild(img)
-            dealElment.appendChild(innerSlider)
+            innerSlider.appendChild(img) 
+            innerSlider.appendChild(view)
+            a.appendChild(innerSlider)
+            dealElment.appendChild(a)
         }
+       /* 
+       call product slider function
+       from slider.js
+       */
+        products = productArray
+         hotSlider(products)
 }
 xhr.onerror=function(){
 console.log('error occured')
