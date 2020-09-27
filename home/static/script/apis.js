@@ -322,11 +322,10 @@ $(document).on('click','.linka',function(){
 // when user clicks on contact seller 
 $('#contact-seller').click(function(){
 // get the product slug 
-var _domain  = 'http://127.0.0.1:8000/'
 var  _half_slug = "product/detail/"
 var product_slug=$('#pd-value',this).val()
 var product_seller=$('#pd-num',this).val()
-var __domain    = window.location.hostname
+var _domain    = window.location.hostname
 var _product_url = _domain+ "/"+ _half_slug+product_slug
 
 // delete old cookies 
