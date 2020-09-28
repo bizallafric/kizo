@@ -16,10 +16,10 @@ class subCategory(models.Model):
 
 class productPost(models.Model):
     images      = models.ManyToManyField
-    created     = models.DateTimeField(auto_now_add=True,null=True)
+    created     = models.DateTimeField(auto_now_add=True,null=True,help_text="select product category")
     updated     = models.DateTimeField(auto_now=True,null=True)
-    cat    = models.ForeignKey(category,on_delete=models.CASCADE,null=True,related_name="product_cat",blank=True)
-    subcat      = models.ForeignKey(subCategory,on_delete=models.CASCADE,null=True,related_name="product_subcategory",blank=True)
+    cat    = models.ForeignKey(category,on_delete=models.CASCADE,null=True,related_name="product_cat")
+    subcat      = models.ForeignKey(subCategory,on_delete=models.CASCADE,null=True,related_name="product_subcategory",help_text="select product sub category")
     brand       = models.CharField(max_length=200,null=True)
     model       = models.CharField(max_length=200,null=True)
     color       = models.CharField(max_length=200,null=True)
@@ -32,8 +32,8 @@ class productPost(models.Model):
     price       = models.CharField(max_length=100,null=True)
     productstate= models.CharField(max_length=100,null=True)
     contact     = models.CharField(max_length=100,null=True,help_text="(237)(number)")
-    hotdeal     = models.BooleanField(default=False)
-    dealoftheday= models.BooleanField(default=False)
+    hotdeal     = models.BooleanField(default=False,help_text="click if there is a gift out for this product")
+    dealoftheday= models.BooleanField(default=False,help_text="click if there is a gift out for this product")
     def __str__(self):
         return self.productname
 
@@ -46,10 +46,10 @@ class productPost(models.Model):
         return super(productPost,self).save(*args,**kwargs)
 
 class ProductDeal(models.Model):
-    dealname     = models.CharField(max_length=200,null=True)
+    dealname     = models.CharField(max_length=200,null=True,help_text="deal name example free winex as gift")
     product      = models.ForeignKey(productPost,blank=True,on_delete=models.CASCADE,null=True,related_name="productdeal")
-    dealimg     = models.ImageField(upload_to="dealimg",null=True)
-    description = models.TextField(null=True,blank=True)
+    dealimg     = models.ImageField(upload_to="dealimg",null=True,help_text="picture of the gift")
+    description = models.TextField(null=True,blank=True,help_text="description of the gift")
 
     def __str__(self):
         return self.dealname

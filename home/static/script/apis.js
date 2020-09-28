@@ -384,7 +384,7 @@ function getAuthState(){
         // redirect user to seller whatsapp account
         else{
             
-            window.location.href="https://wa.me/"+get_seller_num+"/?text=" +get_product_url +"%0a‎" +"Hello I am interested in product"
+            window.location.href="https://wa.me/"+get_seller_num+"/?text=" +get_product_url 
             
         }
     }
