@@ -732,7 +732,46 @@ footer .url{
     margin-top:100px;
     margin-left:15%;
 }
+.cookies-notification {
+    display: none;
+    color:white;
+    font-size:18px;
+    line-height: 1.5;
+    position: fixed;
+    bottom:0px;
+    width:100%;
+    background-color:brown;
+    text-align: center;
+    padding:10px 10px 10px;
+}
+.cookies-notification a{
+    color:white;
+}
+.accept-cookies {
+    margin-bottom:20px;
+    border:solid;
+    width:10%;
+    position: relative;
+    left:40%;
+    padding:1% 2% 1%;
+    color:white;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+    -moz-border-radius:10px;
+    border-width:1px;
+    cursor: pointer;
+}
   @media only screen and (min-width:150px) and (max-width:400px){
+    
+    .accept-cookies {
+        width:50%;
+        position: relative;
+        left:20%;
+        padding:1% 2% 1%;
+     
+    }
     .policy-container{
         width:90%;
         margin-top:20px;
@@ -1024,6 +1063,13 @@ footer .url{
 
 
   @media only screen and (min-width:400px) and (max-width:600px){
+    .accept-cookies {
+        width:50%;
+        position: relative;
+        left:20%;
+        padding:1% 2% 1%;
+     
+    }
     .policy-container{
         width:90%;
         margin-top:20px;

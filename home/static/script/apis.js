@@ -1,4 +1,32 @@
 
+/* display cookie notification just once to user
+*/
+
+
+/* get accept cookie el */
+$(document).ready(function(){
+    displyCNofy()
+    function displyCNofy(){
+
+        var _state= getCookie('cookieaccepted') 
+        if(_state==1){
+         $('.cookies-notification').hide()
+        }
+        else{
+         console.log(_state)
+         $('.cookies-notification').show();
+        }
+     }
+$('.accept-cookies').click(function(){
+
+    var cname= "cookieaccepted"
+    var  cvalue =1
+    var exdays=365
+    setCookie(cname, cvalue, exdays)
+    $('.cookies-notification').hide('fast');
+
+})
+})
 /* create and login user form */
 const registerUserForm = document.querySelector('#registrationfm');
 // submit form event listener
@@ -74,6 +102,7 @@ $(document).ready(function(){
         }]
     });
 });
+
 
 // delete loadcount cookie
 setCookie('loadcount', 0, -1)
@@ -384,7 +413,7 @@ function getAuthState(){
         // redirect user to seller whatsapp account
         else{
             
-            window.location.href="https://wa.me/"+get_seller_num+"/?text=" +"http://"+get_product_url +"%0a‎" +"Hello I am interested in product"
+            window.location.href="https://wa.me/"+get_seller_num+"/?text=" +"https://"+get_product_url +"%0a‎" +"Hello I am interested in product"
             
         }
     }

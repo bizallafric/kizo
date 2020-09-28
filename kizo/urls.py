@@ -24,7 +24,7 @@ handler404 = 'home.views.handler404'
 handler505 = 'home.views.handler505'
 handler500 = 'home.views.handler500'
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('monikizo/admin', admin.site.urls),
     path('',include('home.urls')),
 ]
 
