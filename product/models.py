@@ -1,5 +1,9 @@
 from django.db import models
 from .slug import Generate_slug
+from PIL import Image
+from io import BytesIO
+import sys
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 class category(models.Model):
     name = models.CharField(max_length=200,null=True)
@@ -59,3 +63,19 @@ class ProductDeal(models.Model):
 class productImages(models.Model):
     image        = models.ImageField(upload_to="images",null=True)
     product      = models.ForeignKey(productPost,on_delete=models.CASCADE,null=True,related_name="productimages")
+    
+    def save(self,*args,**kwargs):
+        self.image = compressImage(self.image)
+        return super(productImages,self).save(*args)
+
+
+def compressImage(uploadedImage):
+    imageTemproary = Image.open(uploadedImage)
+    width,height=imageTemproary.size
+    outputIoStream = BytesIO()
+    imageTemproaryResized = imageTemproary.resize( (300,400) )
+    imageTemproaryResized.save(outputIoStream , format='JPEG', quality=100)   
+    print(imageTemproaryResized.size)
+    outputIoStream.seek(0)
+    uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+    return uploadedImage

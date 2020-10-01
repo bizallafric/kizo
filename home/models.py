@@ -3,6 +3,11 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
+
 
 class UserManager(BaseUserManager):
     def create_user(self,number,password=None,is_active=True,is_admin=False,is_staff=False):
