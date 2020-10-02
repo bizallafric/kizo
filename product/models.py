@@ -24,6 +24,7 @@ class productPost(models.Model):
     updated     = models.DateTimeField(auto_now=True,null=True)
     cat    = models.ForeignKey(category,on_delete=models.CASCADE,null=True,related_name="product_cat")
     subcat      = models.ForeignKey(subCategory,on_delete=models.CASCADE,null=True,related_name="product_subcategory",help_text="select product sub category")
+    sellername  = models.CharField(max_length=200,null=True)
     brand       = models.CharField(max_length=200,null=True)
     model       = models.CharField(max_length=200,null=True)
     color       = models.CharField(max_length=200,null=True)
