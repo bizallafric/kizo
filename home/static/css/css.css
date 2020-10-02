@@ -219,7 +219,7 @@ body{
  }
  .product-display .product-container .product-items
  {
-     margin-left:5%;     
+     margin-left:7%;     
      width:25%;
      float:left;
      margin-bottom: 20px;
@@ -232,10 +232,14 @@ body{
  }
  .product-display .product-container .product-items p{
      font-size: 18px;
+   
  }
+
  .product-display .product-container img
  {
-     width:100%;
+     position: relative;
+     left:20px;
+     width:250px;
      height:400px;
  }
  .product-display .product-container .buybtn
@@ -346,10 +350,6 @@ height:20px;
 
 
 
-h2{
-    text-align:center;
-    padding: 20px;
-  }
   /* Slider */
   
   .slick-slide {
@@ -765,6 +765,13 @@ footer .url{
 }
   @media only screen and (min-width:150px) and (max-width:400px){
     
+    .product-display .product-container img
+    {
+        position: relative;
+        left:20px;
+        width:100px;
+        height:400px;
+    }
     .accept-cookies {
         width:50%;
         position: relative;
@@ -1063,6 +1070,15 @@ footer .url{
 
 
   @media only screen and (min-width:400px) and (max-width:600px){
+    .product-display .product-container img
+    {
+        position: relative;
+        left:20px;
+        width:130px;
+        height:400px;
+        position:left;
+        left:20%;
+    }
     .accept-cookies {
         width:50%;
         position: relative;
@@ -1352,6 +1368,16 @@ footer .url{
 
 
   @media only screen and (min-width:600px) and (max-width:900px){
+   
+    .product-display .product-container img
+    {
+        position: relative;
+        left:20px;
+        width:200px;
+        height:400px;
+        position:left;
+        left:20%;
+    }
     .about-page-container{
         margin-top:50px;
         margin-left:5%;
@@ -1621,7 +1647,15 @@ footer .url{
 
 
   @media only screen and (min-width:900px) and (max-width:1200px){
-  
+    .product-display .product-container img
+    {
+        position: relative;
+        left:20px;
+        width:200px;
+        height:400px;
+        position:left;
+        left:20%;
+    }
     .about-page-container{
         margin-top:50px;
         margin-left:5%;
