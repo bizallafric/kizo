@@ -39,7 +39,7 @@ moveSlides()
 
 function nextSlide(){
   
-    
+    alert('nect')
     clearInterval(interval);
     if(currentslide ===slides){
     slides[-1]

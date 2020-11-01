@@ -26,3 +26,16 @@ $('.shop-options',this).css({'display':'inherit'});
 },function(){
     $('.shop-options',this).css({'display':'none'});
 })
+
+/* 
+click to zoom
+*/
+
+$(document).ready(function(){
+$('.img-active').click(function(){
+ $('.img-active-mobile').show();
+});
+$('.close-zoom').click(function(){
+    $('.img-active-mobile').hide();
+});
+});

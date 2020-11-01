@@ -27,8 +27,15 @@
     </div>
   <div class="img-active">
     <img id="0"src="{{firsimg.image.url}}"  onclick="zoom(this)"></img>
-
+<div class="click-to-zoom">
+  Click to zoom
+</div>
   </div>
+  </div>
+  <div class="img-active-mobile">
+    <div class="close-zoom">Close</div>
+    <img id="2"src="{{firsimg.image.url}}"  onclick="zoom(this)"></img>
+
   </div>
   
 
@@ -177,7 +184,7 @@ $('.side-img img').hover(function(){
 function preview(img){
 
 document.getElementById(0).src=img.src;
-
+document.getElementById(2).src=img.src;
     
   
   

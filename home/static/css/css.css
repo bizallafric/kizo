@@ -226,6 +226,9 @@ body{
  }
  .product-display .product-container .product-items h2,
  .product-display .product-container .product-items p{
+    
+    width:80%;
+     margin-left:0%;
      text-align: center;
      line-height: 10px;
      text-transform: capitalize;
@@ -239,8 +242,8 @@ body{
  {
      position: relative;
      left:20px;
-     width:250px;
-     height:400px;
+     width:200px;
+     height:300px;
  }
  .product-display .product-container .buybtn
  {
@@ -250,7 +253,7 @@ body{
      text-align: center;
      padding:10px 10px 10px;
      position: relative;
-     left:30%;
+     left:20%;
      background-color: blue;
      color:white;
      font-size: 18px;
@@ -770,7 +773,7 @@ footer .url{
         position: relative;
         left:20px;
         width:100px;
-        height:400px;
+        height:140px;
     }
     .accept-cookies {
         width:50%;
@@ -873,10 +876,7 @@ footer .url{
     .product-display .product-container .product-items p{
         font-size: 18px;
     }
-    .product-display .product-container img
-    {
-        height:150px;
-    }
+  
     .product-display .product-container .buybtn
     {
 
@@ -1074,8 +1074,8 @@ footer .url{
     {
         position: relative;
         left:20px;
-        width:130px;
-        height:400px;
+        width:140px;
+        height:180px;
         position:left;
         left:20%;
     }
@@ -1174,10 +1174,7 @@ footer .url{
     .product-display .product-container .product-items p{
         font-size: 18px;
     }
-    .product-display .product-container img
-    {
-        height:200px;
-    }
+ 
     .product-display .product-container .buybtn
     {
 
@@ -1374,7 +1371,7 @@ footer .url{
         position: relative;
         left:20px;
         width:200px;
-        height:400px;
+        height:250px;
         position:left;
         left:20%;
     }
@@ -1450,10 +1447,7 @@ footer .url{
     .product-display .product-container .product-items p{
         font-size: 18px;
     }
-    .product-display .product-container img
-    {
-        height:280px;
-    }
+   
     .product-display .product-container .buybtn
     {
 
@@ -1652,7 +1646,7 @@ footer .url{
         position: relative;
         left:20px;
         width:200px;
-        height:400px;
+        height:260px;
         position:left;
         left:20%;
     }
@@ -1713,10 +1707,7 @@ footer .url{
     .product-display .product-container .product-items p{
         font-size: 18px;
     }
-    .product-display .product-container img
-    {
-        height:280px;
-    }
+    
     .product-display .product-container .buybtn
     {
 
